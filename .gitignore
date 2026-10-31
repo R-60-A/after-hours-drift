@@ -1,4 +1,5 @@
 .qa/
+_site/
 __pycache__/
 *.py[cod]
 *.log

@@ -1,5 +1,13 @@
 # After Hours — Parking Lot Drift
 
+## GitHub Pages
+
+The deployment workflow in `.github/workflows/pages.yml` packages the game from `main` and publishes it with GitHub Pages. The intended URL is **https://r-60-a.github.io/after-hours-drift/**. This is a deployment target, not a claim that the site is currently live.
+
+**Current prerequisite:** GitHub rejected Pages activation for this private repository because the account's current plan does not support it. The repository remains private. Enable a plan supporting Pages for private repositories, or explicitly approve making the repository public, before enabling **Settings → Pages → Source → GitHub Actions**. Then run **Deploy game to GitHub Pages** from the Actions tab. Subsequent pushes to `main` deploy automatically.
+
+The hosted game is public once deployed, even if the source repository remains private on a supported plan. Only runtime game files are published; original assets, tests, tools, documentation, and local QA data are excluded. Gameplay, design, and double-click local launch are unchanged.
+
 Download or clone this repository, then **double-click `index.html`** to play in a desktop browser. Keep its folders together. No installation, build step, server, account, or internet connection is needed. Chrome and Edge are verified; Firefox has not been tested locally.
 
 Click **Start your session** to enable sound and begin. Drive with **WASD** or the **arrow keys**, and hold **Space** to initiate a handbrake slide. Countersteer to straighten out. **Esc** pauses/resumes, **M** toggles sound, and **R** starts a new layout after a crash. Losing browser focus pauses the game; resume explicitly.

@@ -36,6 +36,14 @@ The states are `loading`, `ready`, `playing`, `paused`, `over`, `winner`, and an
 
 ## Verification
 
+### GitHub Pages packaging
+
+Run `python tools/build_pages.py` to generate the ignored `_site/` directory. The script copies the root HTML, source, stylesheet, and runtime images without rewriting them, then checks project-relative paths and exact filename case. This supports the `/after-hours-drift/` project subpath and GitHub's case-sensitive hosting.
+
+The Actions workflow runs on pushes to `main` and manual dispatch, uploads only `_site/`, and deploys through the `github-pages` environment with `pages: write` and `id-token: write`. No personal access token is stored in the repository or needed by the workflow. GitHub Pages must first be available for the repository and set to use GitHub Actions. The current private-repository plan restriction must be resolved before deployment can succeed; changing visibility requires the owner's explicit approval.
+
+### Game checks
+
 Open `tests/index.html` for standalone checks. `tests/core.test.js` covers 1,000 layouts, deterministic generation, fallbacks, collision, tunneling, scoring exclusions, drift chains, circles, and secret-fence positive/negative cases.
 
 `tests/browser.html` hosts the real game in an iframe and runs `browser.test.js`. Local-file iframe access is restricted by default. Use `python tools/qa.py chrome browser-tests` (or `edge`) for the test-only permission, or serve the repository locally for that harness.
