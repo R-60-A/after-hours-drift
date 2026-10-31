@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="#101713" name="theme-color"/>
+    <title>After Hours — Parking Lot Drift</title>
+    <link href="styles/game.css" rel="stylesheet"/>
+    <script defer="" src="src/config.js"></script>
+    <script defer="" src="src/core.js"></script>
+    <script defer="" src="src/audio.js"></script>
+    <script defer="" src="src/lighting.js"></script>
+    <script defer="" src="src/fireworks.js"></script>
+    <script defer="" src="src/game.js"></script>
+  </head>
+  <body>
+    <main aria-label="After Hours parking lot drifting game" id="game">
+      <canvas aria-label="Top-down parking lot. Drive using WASD or the arrow keys." id="world"></canvas>
+      <div aria-hidden="true" class="vignette">
+      </div>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-symbol">↗</span>
+          <div>
+            AFTER HOURS
+            <span class="eyebrow">PARKING LOT DRIFT CLUB</span>
+          </div>
+        </div>
+        <div class="top-actions">
+          <span class="local-badge">
+            <i>
+            </i>
+            LOCAL SESSION
+          </span>
+          <button aria-label="Night mode" aria-pressed="false" id="night" title="Night mode · N">NIGHT OFF</button>
+          <button aria-label="Mute sound" id="mute" title="Sound · M">SOUND ON</button>
+          <button id="pause" title="Pause · Esc">
+            PAUSE
+            <span>Ⅱ</span>
+          </button>
+        </div>
+      </header>
+      <section aria-label="Run statistics" class="hud">
+        <div class="score-block">
+          <span class="eyebrow">SESSION SCORE</span>
+          <strong id="score">00000</strong>
+          <div class="best">
+            PERSONAL BEST
+            <span id="best">0</span>
+          </div>
+        </div>
+        <div class="drift-block">
+          <span class="eyebrow" id="drift-label">FIND YOUR FLOW</span>
+          <strong id="multiplier">
+            ×1
+            <span>.0</span>
+          </strong>
+          <div class="meter">
+            <i id="combo-fill">
+            </i>
+          </div>
+        </div>
+      </section>
+      <div class="toast" id="toast" role="status">
+      </div>
+      <aside class="car-info">
+        <span class="eyebrow">YOUR RIDE / 01</span>
+        <strong>
+          KIA RIO
+          <i>
+            BLUE EDITION
+          </i>
+        </strong>
+        <div>
+          <span id="speed">0</span>
+          <small>KM/H</small>
+          <span class="gear" id="gear">N</span>
+        </div>
+      </aside>
+      <footer class="bottom-bar">
+        <span>
+          <kbd>W A S D</kbd>
+          /
+          <kbd>↑ ← ↓ →</kbd>
+          DRIVE
+        </span>
+        <span>
+          <kbd>SPACE</kbd>
+          HANDBRAKE
+        </span>
+        <span>
+          <kbd>ESC</kbd>
+          PAUSE
+        </span>
+        <span class="lot-label">
+          LOT 01
+          <i>
+            •
+          </i>
+          NO FINISH LINE. JUST ONE MORE RUN.
+        </span>
+      </footer>
+      <section aria-labelledby="panel-title" class="overlay" id="overlay">
+        <div class="panel">
+          <div class="panel-kicker">
+            <span></span>
+            THE LOT IS YOURS
+          </div>
+          <h1 id="panel-title">
+            AFTER
+            <br/>
+            <em>
+              HOURS.
+            </em>
+          </h1>
+          <p id="panel-copy">
+            A blue Rio. An empty evening.
+            <br/>
+            How long can you keep it sideways?
+          </p>
+          <div class="results" hidden="" id="results">
+            <div>
+              <span class="eyebrow">FINAL SCORE</span>
+              <strong id="final-score">0</strong>
+            </div>
+            <div>
+              <span class="eyebrow">PERSONAL BEST</span>
+              <strong id="final-best">0</strong>
+            </div>
+          </div>
+          <div class="rules" id="intro-rules">
+            <p>
+              <b>
+                01
+              </b>
+              Slide to score. Link drifts for up to
+              <strong>×5.</strong>
+            </p>
+            <p>
+              <b>
+                02
+              </b>
+              Complete a circle for a
+              <strong>360° bonus.</strong>
+            </p>
+            <p>
+              <b>
+                03
+              </b>
+              Hit a car or cross the boundary?
+              <strong>Run over.</strong>
+            </p>
+          </div>
+          <button class="primary" disabled="" id="start">
+            PREPARING THE LOT…
+            <span>↗</span>
+          </button>
+          <div class="panel-hint" id="panel-hint">
+            WASD / ARROWS TO DRIVE
+            <span>·</span>
+            SPACE TO SLIDE
+          </div>
+        </div>
+        <div class="overlay-caption">
+          <span>OPEN LATE. DRIVE SIDEWAYS.</span>
+          <small>FREE DRIVE / ENDLESS SCORE ATTACK</small>
+        </div>
+      </section>
+      <div aria-hidden="true" id="crash-flash">
+      </div>
+      <section aria-labelledby="winner-title" class="winner" hidden="" id="winner">
+        <canvas aria-hidden="true" id="fireworks"></canvas>
+        <div class="winner-content">
+          <span class="eyebrow">SECRET UNLOCKED</span>
+          <h2 id="winner-title">Winner!</h2>
+          <p class="winner-message">Misha LOH</p>
+          <p class="winner-score">
+            SESSION SCORE
+            <strong id="winner-score">0</strong>
+          </p>
+          <button class="primary" id="winner-restart">
+            ONE MORE RUN
+            <span>↗</span>
+          </button>
+          <span class="panel-hint">PRESS R TO RETURN TO THE LOT</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

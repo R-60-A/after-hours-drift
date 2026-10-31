@@ -1,0 +1,660 @@
+* {
+  box-sizing: border-box
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f2f0e5;
+  background: #101713;
+  font-synthesis: none
+}
+
+body {
+  margin: 0;
+  overflow: hidden
+}
+
+button {
+  font: inherit;
+  cursor: pointer
+}
+
+button:focus-visible {
+  outline: 2px solid #d7fa79;
+  outline-offset: 5px
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait
+}
+
+button {
+  color: inherit
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #18201a
+}
+
+#world {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8, 17, 13, .55), transparent 27%, transparent 70%, rgba(8, 17, 13, .75)), radial-gradient(ellipse at center, transparent 38%, #07100d55)
+}
+
+.topbar {
+  position: absolute;
+  top: 30px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 2px
+}
+
+.brand-symbol {
+  display: grid;
+  place-items: center;
+  background: #d7fa79;
+  color: #1a281c;
+  width: 36px;
+  height: 36px;
+  font-size: 30px;
+  line-height: 1
+}
+
+.eyebrow {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #d2d8c6
+}
+
+.brand .eyebrow {
+  font-size: 8px;
+  letter-spacing: 2.2px;
+  margin-top: 6px;
+  font-weight: 400;
+  color: #b0b9a9
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.top-actions button {
+  background: #111d17b8;
+  border: 1px solid #e0f2cf40;
+  padding: 11px 14px;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  border-radius: 3px
+}
+
+.top-actions button:hover {
+  background: #34432c
+}
+
+.top-actions button span {
+  margin-left: 8px
+}
+
+.local-badge {
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  margin-right: 16px;
+  color: #cad6c1
+}
+
+.local-badge i {
+  display: inline-block;
+  background: #d7fa79;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  margin-right: 7px
+}
+
+.hud {
+  position: absolute;
+  top: 112px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none
+}
+
+.score-block strong {
+  font-size: 56px;
+  line-height: 1.15;
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums
+}
+
+.best {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #c7cbbb;
+  margin-top: 5px
+}
+
+.best span {
+  margin-left: 12px;
+  color: #e6ebdf;
+  font-weight: bold
+}
+
+.drift-block {
+  text-align: right;
+  width: 160px
+}
+
+.drift-block strong {
+  font-size: 52px;
+  line-height: 1.2;
+  color: #d7fa79;
+  font-style: italic;
+  letter-spacing: -3px
+}
+
+.drift-block strong span {
+  font-size: 25px;
+  letter-spacing: -1px
+}
+
+.meter {
+  height: 3px;
+  background: #d8f3ca35;
+  margin-top: 6px;
+  overflow: hidden
+}
+
+.meter i {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: #d7fa79;
+  transition: width .1s
+}
+
+.car-info {
+  position: absolute;
+  bottom: 104px;
+  left: 36px;
+  pointer-events: none
+}
+
+.car-info strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 10px
+}
+
+.car-info strong i {
+  font-style: normal;
+  font-size: 8px;
+  color: #b5c3ac;
+  letter-spacing: 1px;
+  margin-left: 12px
+}
+
+.car-info>div {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 6px
+}
+
+.car-info #speed {
+  font-size: 50px;
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums
+}
+
+.car-info small {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #b6c3af
+}
+
+.gear {
+  align-self: center;
+  border: 1px solid #9eaf8b88;
+  padding: 6px 9px;
+  font-size: 13px;
+  margin-left: 10px;
+  color: #d7fa79
+}
+
+.bottom-bar {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  bottom: 27px;
+  padding-top: 19px;
+  border-top: 1px solid #c4d1b62f;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  color: #c1cbb7;
+  font-size: 8px;
+  letter-spacing: 1px;
+  pointer-events: none
+}
+
+kbd {
+  font: 8px Arial, sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #c4d1b64a;
+  border-radius: 3px;
+  padding: 5px;
+  color: #eef1e2;
+  margin-right: 4px
+}
+
+.lot-label {
+  margin-left: auto;
+  font-size: 8px
+}
+
+.lot-label i {
+  color: #d7fa79;
+  font-style: normal;
+  margin: 0 8px
+}
+
+.overlay {
+  position: absolute;
+  inset: 86px 0 78px;
+  background: linear-gradient(90deg, #0a1511e8 0%, #0b1712c9 36%, #0a151133 76%, transparent);
+  display: flex;
+  align-items: center;
+  padding: 24px clamp(36px, 7vw, 120px)
+}
+
+.overlay[hidden] {
+  display: none
+}
+
+.panel {
+  max-width: 430px;
+  width: 100%
+}
+
+.panel-kicker {
+  font-size: 9px;
+  letter-spacing: 2.6px;
+  color: #d7fa79;
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.panel-kicker span {
+  width: 22px;
+  height: 1px;
+  background: #d7fa79
+}
+
+h1 {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-stretch: condensed;
+  font-size: clamp(65px, 7.9vw, 118px);
+  letter-spacing: -2px;
+  line-height: .86;
+  margin: 25px 0 22px;
+  font-weight: 900
+}
+
+h1 em {
+  font-style: italic;
+  color: #d7fa79
+}
+
+#panel-copy {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #bdc9b7;
+  margin: 0 0 25px
+}
+
+.rules {
+  border-top: 1px solid #d0dfbe2a;
+  padding-top: 10px;
+  margin-bottom: 26px
+}
+
+.rules p {
+  font-size: 11px;
+  color: #bbc8b1;
+  margin: 14px 0
+}
+
+.rules b {
+  font: 9px monospace;
+  color: #d7fa79;
+  margin-right: 16px
+}
+
+.rules strong {
+  color: #e2e9d6;
+  font-weight: 400
+}
+
+.primary {
+  width: 100%;
+  background: #d7fa79;
+  border: 0;
+  border-radius: 3px;
+  color: #1a2619;
+  padding: 19px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  font-weight: 800;
+  transition: background .15s, transform .15s
+}
+
+.primary:hover {
+  background: #e5ffa4;
+  transform: translateY(-1px)
+}
+
+.primary span {
+  font-size: 23px;
+  line-height: 10px
+}
+
+.panel-hint {
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: #94a38c;
+  text-align: center;
+  margin-top: 17px
+}
+
+.panel-hint span {
+  margin: 0 8px
+}
+
+.overlay-caption {
+  position: absolute;
+  bottom: 34px;
+  right: 36px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #e2ebd4
+}
+
+.overlay-caption small {
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  color: #a4b49a
+}
+
+.results {
+  display: flex;
+  gap: 45px;
+  margin: 25px 0 30px
+}
+
+.results[hidden] {
+  display: none
+}
+
+.results strong {
+  font-size: 35px;
+  display: block;
+  margin-top: 7px;
+  font-variant-numeric: tabular-nums
+}
+
+.results>div:first-child strong {
+  color: #d7fa79
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #e7ffa6;
+  text-shadow: 0 2px 10px #000;
+  opacity: 0;
+  transition: opacity .2s;
+  pointer-events: none;
+  white-space: nowrap
+}
+
+.toast.visible {
+  opacity: 1
+}
+
+#crash-flash {
+  position: absolute;
+  inset: 0;
+  background: #f05f3940;
+  pointer-events: none;
+  opacity: 0
+}
+
+#crash-flash.active {
+  animation: flash .65s ease-out
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
+  }
+}
+
+body.menu .hud,
+body.menu .car-info {
+  opacity: .35
+}
+
+body.menu .drift-block {
+  opacity: 0
+}
+
+@media(max-height:760px) {
+  h1 {
+    font-size: 76px;
+    margin: 19px 0
+  }
+
+  .rules p {
+    margin: 10px 0
+  }
+
+  .rules {
+    margin-bottom: 18px
+  }
+
+  #panel-copy {
+    margin-bottom: 15px
+  }
+
+  .overlay-caption {
+    bottom: 16px
+  }
+
+  .overlay {
+    padding-top: 15px;
+    padding-bottom: 15px
+  }
+
+  .hud {
+    top: 95px
+  }
+
+  .score-block strong {
+    font-size: 44px
+  }
+}
+
+@media(max-width:900px) {
+
+  .local-badge,
+  .lot-label,
+  .overlay-caption {
+    display: none
+  }
+
+  .topbar,
+  .hud {
+    left: 22px;
+    right: 22px
+  }
+
+  .bottom-bar {
+    left: 22px;
+    right: 22px;
+    gap: 12px
+  }
+
+  .car-info {
+    left: 22px
+  }
+
+  .brand {
+    font-size: 14px
+  }
+
+  .overlay {
+    padding-left: 35px
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    transition: none !important
+  }
+
+  .primary:hover {
+    transform: none
+  }
+}
+
+body.night .top-actions #night {
+  color: #d7fa79;
+  border-color: #d7fa7980;
+  background: #25311de0
+}
+
+body.night .vignette {
+  background: linear-gradient(180deg, #040b1b66, transparent 25%, transparent 72%, #040b1b88), radial-gradient(ellipse at center, transparent 42%, #03091866)
+}
+
+.winner {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(ellipse at center, #08111ccc, #040918ed);
+  display: grid;
+  place-items: center;
+  text-align: center
+}
+
+.winner[hidden] {
+  display: none
+}
+
+#fireworks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none
+}
+
+.winner-content {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  width: min(760px, 95vw);
+  text-shadow: 0 3px 30px #030913
+}
+
+.winner-content>.eyebrow {
+  color: #f8d78e;
+  letter-spacing: 5px
+}
+
+.winner h2 {
+  font: italic 900 clamp(80px, 14vw, 205px)/1 Impact, 'Arial Narrow', sans-serif;
+  color: #d7fa79;
+  letter-spacing: -3px;
+  margin: 18px 0
+}
+
+.winner-message {
+  font-size: clamp(35px, 6vw, 82px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0 0 25px;
+  color: #fff3cc
+}
+
+.winner-score {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #bacbb5
+}
+
+.winner-score strong {
+  color: #f2f0e5;
+  font-size: 20px;
+  margin-left: 12px
+}
+
+.winner .primary {
+  max-width: 300px;
+  margin: 28px auto 0
+}
+
+.winner .panel-hint {
+  display: block
+}
